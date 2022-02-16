@@ -32,4 +32,6 @@ jobs:
       run: pwd
 
     - name: Build with Maven
-      run: mvn docker:build docker:push
+      run: |
+        cd app
+        mvn docker:build docker:push
