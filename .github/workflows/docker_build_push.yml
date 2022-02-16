@@ -41,7 +41,7 @@ jobs:
         </settingsSecurity>
         EOF
 
-    - name: Step 3 - Build docker image with Maven
+    - name: Step 4 - Build docker image with Maven
       run: |
         cd app
         mvn docker:build docker:push
