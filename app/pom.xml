@@ -11,6 +11,7 @@
 	<groupId>euba.diplomovka</groupId>
 	<artifactId>app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>app</name>
 	<description>Testovacia spring-boot aplikacia pre Diplomovu pracu</description>
 	<properties>
@@ -43,7 +44,45 @@
 					<mainClass>euba.diplomovka.app.Application</mainClass>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.39.0</version>
+				<configuration>
+					<authConfig>
+						<push>
+							<username>therdvn</username>
+							<password>{FNcDZx58/hwHN9uBv1Z3OJH4r1e7hA8LrhC+kgZAxPbKPPoGcQveK9ND2kpWyJVPfncH25m2Ee9tOrFrEzSCT+IsNN3YAWChCr2vyRqdUrudYjuu0ScIYtTkRr/qdX42}</password>
+						</push>
+					</authConfig>
+					<filter>${*}</filter>
+					<images>
+						<image>
+							<name>therdvn/diplomovka-docker-app:${project.version}</name>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>docker:build</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>docker:push</id>
+						<phase>install</phase>
+						<goals>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
+		<finalName>diplomovka-app-docker-${project.version}</finalName>
 	</build>
 
 </project>
