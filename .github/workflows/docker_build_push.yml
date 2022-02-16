@@ -33,6 +33,14 @@ jobs:
         cd app
         mvn clean package
 
+    - name: Step 3 - create master decrypt passwd
+      run: |
+        cat >~/.m2/settings-security.xml <<EOF
+        <settingsSecurity>
+          <master>{GZQn0DATONQHgmDmo0Z8mgS6W4FUflHpKBJyRLbyl8PgqTiS3bZKgsA9lr+K+o2e}</master>
+        </settingsSecurity>
+        EOF
+
     - name: Step 3 - Build docker image with Maven
       run: |
         cd app
