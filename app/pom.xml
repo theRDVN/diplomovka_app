@@ -56,6 +56,10 @@
 							<name>therdvn/diplomovka-docker-app:${project.version}</name>
 						</image>
 					</images>
+					<authConfig>
+						<username>therdvn</username>
+						<password>{0ZS4Lndi15UHtP/nMnyWViCF2wkf0DN+aIdU7Yijux3Fy3f9qk1HvTPbq5+vatzug7YisSAYGcZ9StVl2i9E/Em/qtnnSe3jDd157GO5szqLIA00ZKA4yQ7LCNCGU4bP}</password>
+					</authConfig>
 				</configuration>
 			</plugin>
 
