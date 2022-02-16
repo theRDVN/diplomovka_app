@@ -28,7 +28,12 @@ jobs:
         pwd
         ls -a
 
-    - name: Step 2 - Build docker image with Maven
+    - name: Step 2 - Package app to .jar
+      run: |
+        cd app
+        mvs clean package
+
+    - name: Step 3 - Build docker image with Maven
       run: |
         cd app
         mvn docker:build docker:push
