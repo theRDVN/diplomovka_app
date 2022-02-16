@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Step 1 - Get PWD
-      run: pwd
+      run: ls -a
 
     - name: Step 2 - go to file where pom.xml exists
       run: cd app
