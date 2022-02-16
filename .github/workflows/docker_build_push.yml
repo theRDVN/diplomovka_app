@@ -23,15 +23,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Step 1 - Get PWD
-      run: ls -a
+      run: |
+        cd app
+        pwd
+        ls -a
 
-    - name: Step 2 - go to file where pom.xml exists
-      run: cd app
-
-    - name: Test pwd
-      run: pwd
-
-    - name: Build with Maven
+    - name: Step 2 - Build docker image with Maven
       run: |
         cd app
         mvn docker:build docker:push
