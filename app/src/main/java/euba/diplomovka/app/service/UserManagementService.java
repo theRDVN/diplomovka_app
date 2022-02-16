@@ -11,7 +11,8 @@ import java.util.List;
 public class UserManagementService {
 
     List<User> userList = new ArrayList<>(Arrays.asList(new User("pieterr", "Radovan", "Pieter", "1234-scdw2-2fcevw342-2323"),
-            new User("usert", "Test", "User", "3454-2csfdfd-sfdvsdjv-7623")));
+            new User("usert", "Test", "User", "3454-2csfdfd-sfdvsdjv-7623"),
+            new User("donovalr", "Ren", "Donoval", "45sd-as5d56d-d4as4s56-7895")));
 
     public List<User> getUserList() {
 
