@@ -5,9 +5,10 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+        tags:
+          - '[0-9]+.[0-9]+.[0-9]+'
+          - '[0-9]+.[0-9]+.[0-9]+-SNAPSHOT'
+#    branches: [ master ]
 
 jobs:
   build:
@@ -44,4 +45,13 @@ jobs:
     - name: Step 4 - Build docker image with Maven
       run: |
         cd app
-        mvn docker:build docker:push
+        mvn docker:build
+
+    - name: Step 5 - Build docker image with Maven
+      run: |
+        cd app
+        mvn docker:push
+
+    - name: Step 6 - Call ST2 webhook
+      run: |
+        curl -d {"app_artifact_id":"diplomovka-docker-app", "app_version":"0.0.1-SNAPSHOT"} -sLk -X POST -w %{http_code} -o /dev/null -H Content-Type: application/json -H St2-Api-Key: XR0GlOb85GumTU0PzwTrqfhWp6pM5jrbip8p7Z--kGo https://34.77.225.107/api/webhooks/deploy-diplomovka-docker-base
