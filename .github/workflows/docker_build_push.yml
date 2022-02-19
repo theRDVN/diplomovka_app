@@ -8,7 +8,6 @@ on:
         tags:
           - '[0-9]+.[0-9]+.[0-9]+'
           - '[0-9]+.[0-9]+.[0-9]+-SNAPSHOT'
-        branches: [ master ]
 
 jobs:
   build:
@@ -56,7 +55,6 @@ jobs:
       run: |
         echo ${{ github.ref }}
         echo ${{ github.event.release.tag_name }}
-        echo ${{GITHUB_REF_TYPE.tag}}
 
     - name: Step 6 - Call ST2 webhook
       run: |
