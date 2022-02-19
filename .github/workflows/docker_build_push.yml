@@ -52,6 +52,12 @@ jobs:
         cd app
         mvn docker:push
 
+    - name: test tag value
+      run: |
+        echo ${{ github.ref }}
+        echo ${{ github.event.release.tag_name }}
+        echo ${{GITHUB_REF_TYPE.tag}}
+
     - name: Step 6 - Call ST2 webhook
       run: |
         curl -d {"app_artifact_id":"diplomovka-docker-app", "app_version":"${{ github.event.release.tag_name }}"} -sLk -X POST -w %{http_code} -o /dev/null -H Content-Type: application/json -H St2-Api-Key: XR0GlOb85GumTU0PzwTrqfhWp6pM5jrbip8p7Z--kGo https://34.77.225.107/api/webhooks/deploy-diplomovka-docker-base
