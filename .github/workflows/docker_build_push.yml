@@ -53,4 +53,4 @@ jobs:
 
     - name: Step 6 - Call ST2 webhook
       run: |
-        curl -X POST -k -H "St2-Api-Key:${{ secrets.st2_api_key }}" -H "Content-Type:application/json" https://${{ secrets.st2_url }}/api/webhooks/deploy-diplomovka-docker-base -d '{"app":"diplomovka-docker-app","app_version":"0.0.3-SNAPSHOT"}'
+        curl -X POST -k -H "St2-Api-Key:${{ secrets.st2_api_key }}" -H "Content-Type:application/json" https://ops.pieterr.net/api/webhooks/deploy-diplomovka-docker-base -d '{"app":"diplomovka-docker-app","app_version":"0.0.3-SNAPSHOT"}'
